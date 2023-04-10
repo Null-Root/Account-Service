@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ResponseModel } from "../models";
 
-export default function check_priv() {
+export default function auth_verify() {
     // requires email and token
 }

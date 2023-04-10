@@ -53,7 +53,6 @@ class LogState {
     is_logged_in?: boolean = true;
     login_date?: Date = new Date()
     user_token?: string = '';
-    refresh_token?: string = '';
 
     constructor() {}
 
@@ -69,11 +68,6 @@ class LogState {
 
     setUserToken(value: string) {
         this.user_token = value;
-        return this;
-    }
-
-    setRefreshToken(value: string) {
-        this.refresh_token = value;
         return this;
     }
 }

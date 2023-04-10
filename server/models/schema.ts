@@ -9,8 +9,7 @@ const AccountSchema = new Schema({
     log_state: {
         is_logged_in: String,
         login_date: Date,
-        user_token: String,
-        refresh_token: String
+        user_token: String
     }
 });
 
