@@ -12,7 +12,7 @@ import {
     updateAccountHandler,
     deleteAccountHandler
 } from './handlers';
-import { is_valid_inputs } from './middleware';
+import { auth_verify, is_valid_inputs } from './middleware';
 
 const app = express();
 const port = process.env.API_PORT;
@@ -57,12 +57,26 @@ app.post(URL_PATH + '/logout', async(req: Request, res: Response) => {
     await logoutHandler(req, res);
 });
 
+app.post(URL_PATH + '/update-account', auth_verify, async(req: Request, res: Response) => {
+    if(!is_valid_inputs(
+        'POST',
+        [['first_name', 'string'],
+        ['last_name', 'string'],
+        ['date_of_birth', 'date'],
+        ['new_email', 'string'],
+        ['password', 'string'],
+        ['old_email', 'string']],
+        req, res)) return;
+	await updateAccountHandler(req, res);
+});
+
+
 // Non-Existent Routes
 app.use("*", (req: any, res: any) => {
     res.status(404).json(
         new ResponseModel(
             'failed',
-            'non-existent routes'
+            'non-existent route'
         )
 	);
 });
