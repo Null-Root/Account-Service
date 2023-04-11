@@ -96,10 +96,21 @@ async function updateAccount(account: AccountModel) {
     return true;
 }
 
+async function deleteAccount(email: string) {
+    try {
+        await AccountInfo.deleteOne({ email: email });
+    }
+    catch(ex) {
+        return false;
+    }
+    return true;
+}
+
 
 export {
     checkIfAccountExists,
     getAccountDetails,
     createNewAccount,
-    updateAccount
+    updateAccount,
+    deleteAccount
 }

@@ -70,6 +70,10 @@ app.post(URL_PATH + '/update-account', auth_verify, async(req: Request, res: Res
 	await updateAccountHandler(req, res);
 });
 
+app.post(URL_PATH + '/delete-account', auth_verify, async(req: Request, res: Response) => {
+    await deleteAccountHandler(req, res);
+});
+
 
 // Non-Existent Routes
 app.use("*", (req: any, res: any) => {
