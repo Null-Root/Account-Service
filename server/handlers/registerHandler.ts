@@ -10,13 +10,12 @@ export default async function registerHandler(req: Request, res: Response) {
 
     // Check email
     if(await checkIfAccountExists(email)) {
-        res.status(400).json(
+        return res.status(400).json(
             new ResponseModel(
                 'failed',
                 'account with same email already exists'
             )
         )
-        return;
     }
 
     // Process Information
@@ -36,19 +35,18 @@ export default async function registerHandler(req: Request, res: Response) {
     const result = createNewAccount(account);
 
     if (result) {
-        res.status(201).json(
+        return res.status(201).json(
             new ResponseModel(
                 'success',
                 'account registered successfully'
             ).setPayload(account)
         )
     }
-    else {
-        res.status(400).json(
-            new ResponseModel(
-                'failed',
-                'account registration failed'
-            )
+    
+    return res.status(400).json(
+        new ResponseModel(
+            'failed',
+            'account registration failed'
         )
-    }
+    )
 }

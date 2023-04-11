@@ -1,6 +1,5 @@
-import { connect, connection } from 'mongoose';
 import { AccountInfo, AccountModel, LogState } from '../models';
-
+import mongoose from 'mongoose';
 
 async function checkIfAccountExists(email: string) {
     // check if an email exists in the database
@@ -15,7 +14,7 @@ function createNewAccount(account: AccountModel) {
     try {
         const { account_info, log_state } = account;
         const { first_name, last_name, date_of_birth, email, hashed_password } = account_info!;
-        const { is_logged_in, login_date, user_token, refresh_token } = log_state!;
+        const { is_logged_in, login_date, user_token } = log_state!;
 
         const newAccountInfo = new AccountInfo({
             first_name: first_name,
@@ -23,11 +22,11 @@ function createNewAccount(account: AccountModel) {
             date_of_birth: date_of_birth,
             email: email,
             hashed_password: hashed_password,
+            share_id: new mongoose.mongo.ObjectId(),
             log_state: {
                 is_logged_in: is_logged_in,
                 login_date: login_date,
-                user_token: user_token,
-                refresh_token: refresh_token
+                user_token: user_token
             }
         })
 

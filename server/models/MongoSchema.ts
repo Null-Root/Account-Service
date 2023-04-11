@@ -6,6 +6,7 @@ const AccountSchema = new Schema({
     date_of_birth: Date,
     email: String,
     hashed_password: String,
+    share_id: String,
     log_state: {
         is_logged_in: String,
         login_date: Date,

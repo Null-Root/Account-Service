@@ -23,7 +23,7 @@ interface BasicAccountInfo {
 }
 
 class AccountModel {
-    id?: string
+    share_id?: string
 
     // Required Info at Registration
     account_info?: BasicAccountInfo
@@ -33,8 +33,8 @@ class AccountModel {
 
     constructor() {}
     
-    setId(value: string) {
-        this.id = value;
+    setShareId(value: string) {
+        this.share_id = value;
         return this;
     }
 
