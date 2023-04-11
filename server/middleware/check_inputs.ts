@@ -60,6 +60,14 @@ export default function is_valid_inputs(
 
 
 function isValidDate(dateString: string): boolean {
+    // Check new Date(date_of_birth)
+    try {
+        const d = new Date(dateString)
+    }
+    catch(ex) {
+        return false;
+    }
+
     // Parse the date parts from the date string
     const parts = dateString.split("-");
     const year = parseInt(parts[0], 10);

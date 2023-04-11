@@ -26,8 +26,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
+const URL_PATH = "/login/v1";
+
 // Routes
-app.post('/login/v1/register', async(req: Request, res: Response) => {
+app.post(URL_PATH + '/register', async(req: Request, res: Response) => {
     if(!is_valid_inputs(
         'POST',
         [['first_name', 'string'],
@@ -37,7 +39,7 @@ app.post('/login/v1/register', async(req: Request, res: Response) => {
         ['password', 'string']],
         req, res)) return;
 	await registerHandler(req, res);
-})
+});
 
 // Non-Existent Routes
 app.use("*", (req: any, res: any) => {
