@@ -52,8 +52,7 @@ app.post(URL_PATH + '/login', async(req: Request, res: Response) => {
 app.post(URL_PATH + '/logout', async(req: Request, res: Response) => {
     if(!is_valid_inputs(
         'POST',
-        [['email', 'string'],
-        ['token', 'string']],
+        [['email', 'string']],
         req, res)) return;
     await logoutHandler(req, res);
 });

@@ -18,16 +18,6 @@ export default async function logoutHandler(req: Request, res: Response) {
 
     // Check if same token
     const account_details = await getAccountDetails(email);
-    const { log_state } = account_details;
-
-    if (log_state?.user_token !== token) {
-        return res.status(400).json(
-            new ResponseModel(
-                'failed',
-                'token mismatch'
-            )
-        );
-    }
 
     // Logout the said email
     account_details.setLogState(
