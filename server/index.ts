@@ -41,13 +41,22 @@ app.post(URL_PATH + '/register', async(req: Request, res: Response) => {
 	await registerHandler(req, res);
 });
 
-app.post (URL_PATH + '/login', async(req: Request, res: Response) => {
+app.post(URL_PATH + '/login', async(req: Request, res: Response) => {
     if(!is_valid_inputs(
         'POST',
         [['email', 'string'],
         ['password', 'string']],
         req, res)) return;
     await loginHandler(req, res);
+});
+
+app.post(URL_PATH + '/logout', async(req: Request, res: Response) => {
+    if(!is_valid_inputs(
+        'POST',
+        [['email', 'string'],
+        ['token', 'string']],
+        req, res)) return;
+    await logoutHandler(req, res);
 });
 
 // Non-Existent Routes
