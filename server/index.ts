@@ -9,7 +9,6 @@ import {
 	registerHandler,
     loginHandler,
     logoutHandler,
-	getLogStateHandler,
     updateAccountHandler,
     deleteAccountHandler
 } from './handlers';
@@ -73,7 +72,3 @@ app.use("*", (req: any, res: any) => {
 app.listen(port, () => {
     console.log(`Server listening on the port::${port}`);
 });
-
-function valid_inputs(arg0: string) {
-    throw new Error('Function not implemented.');
-}
