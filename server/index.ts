@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
-const URL_PATH = "/login/v1";
+const URL_PATH = "/login-service/v1";
 
 // Routes
 app.post(URL_PATH + '/register', async(req: Request, res: Response) => {
