@@ -32,7 +32,7 @@ export default async function registerHandler(req: Request, res: Response) {
                         .setLogState(new LogState())
     
     // Push information to database
-    const result = createNewAccount(account);
+    const result = await createNewAccount(account);
 
     if (result) {
         return res.status(201).json(

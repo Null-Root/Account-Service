@@ -8,7 +8,7 @@ const AccountSchema = new Schema({
     hashed_password: String,
     share_id: String,
     log_state: {
-        is_logged_in: String,
+        is_logged_in: Boolean,
         login_date: Date,
         user_token: String
     }

@@ -41,6 +41,15 @@ app.post(URL_PATH + '/register', async(req: Request, res: Response) => {
 	await registerHandler(req, res);
 });
 
+app.post (URL_PATH + '/login', async(req: Request, res: Response) => {
+    if(!is_valid_inputs(
+        'POST',
+        [['email', 'string'],
+        ['password', 'string']],
+        req, res)) return;
+    await loginHandler(req, res);
+});
+
 // Non-Existent Routes
 app.use("*", (req: any, res: any) => {
     res.status(404).json(

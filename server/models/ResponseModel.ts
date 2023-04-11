@@ -1,14 +1,14 @@
 class ResponseModel {
     status: string;
     description: string
-    payload: AccountModel | {} = {}
+    payload: AccountModel | any = {}
     
     constructor(_status: string, _description: string) {
         this.status = _status;
         this.description = _description;
     }
 
-    setPayload(value: AccountModel) {
+    setPayload(value: AccountModel | any) {
         this.payload = value;
         return this;
     }
@@ -23,6 +23,7 @@ interface BasicAccountInfo {
 }
 
 class AccountModel {
+    id?: string
     share_id?: string
 
     // Required Info at Registration
@@ -32,6 +33,11 @@ class AccountModel {
     log_state?: LogState
 
     constructor() {}
+
+    setId(value: string) {
+        this.id = value;
+        return this;
+    }
     
     setShareId(value: string) {
         this.share_id = value;
@@ -50,7 +56,7 @@ class AccountModel {
 }
 
 class LogState {
-    is_logged_in?: boolean = true;
+    is_logged_in?: boolean = false;
     login_date?: Date = new Date()
     user_token?: string = '';
 
