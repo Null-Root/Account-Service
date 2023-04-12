@@ -2,7 +2,7 @@ require('dotenv').config();
 
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import express, { Request, Response } from 'express';
+import express, { Request, Response, response } from 'express';
 import { ResponseModel, RoleType } from './models';
 
 import {
@@ -10,7 +10,8 @@ import {
     loginHandler,
     logoutHandler,
     updateAccountHandler,
-    deleteAccountHandler
+    deleteAccountHandler,
+    checkEmailHandler
 } from './handlers';
 import { auth_verify, is_valid_inputs } from './middleware';
 
@@ -72,6 +73,10 @@ app.post(URL_PATH + '/update-account', auth_verify, async(req: Request, res: Res
 
 app.post(URL_PATH + '/delete-account', auth_verify, async(req: Request, res: Response) => {
     await deleteAccountHandler(req, res);
+});
+
+app.post(URL_PATH + '/check-email', async(req: Request, res: Response) => {
+    await checkEmailHandler(req, res);
 });
 
 
