@@ -45,3 +45,10 @@ Path: <BASE_URL>/login-service/v1/delete-account \
 Http Method: POST, x-www-form-urlencoded \
 Required Parameters: 
 - token (must be a valid token) 
+
+
+*Check Email*\
+Path: <BASE_URL>/login-service/v1/check-email \
+Http Method: POST, x-www-form-urlencoded \
+Required Parameters:
+- email (must be a string)
