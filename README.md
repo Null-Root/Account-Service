@@ -1,1 +1,47 @@
 # Login-Service
+
+# Paths
+*Register Account*
+Path: <BASE_URL>/login-service/v1/register
+Http Method: POST, x-www-form-urlencoded
+Required Parameters:
+- first_name (must be a string)
+- last_name (must be a string)
+- date_of_birth (must be a valid date string with format yyyy-mm-dd e.g. 2021-12-31)
+- email (must be a string)
+- password (must be a string)
+
+
+*Login Account*
+Path: <BASE_URL>/login-service/v1/login
+Http Method: POST, x-www-form-urlencoded
+Required Parameters:
+- email (must be a string)
+- password (must be a string)
+
+
+*Logout Account*
+Path: <BASE_URL>/login-service/v1/logout
+Http Method: POST, x-www-form-urlencoded
+Required Parameters:
+- email (must be a string)
+
+
+*Update Account*
+Path: <BASE_URL>/login-service/v1/update-account
+Http Method: POST, x-www-form-urlencoded
+Required Parameters:
+- token (must be a valid token)
+- old_email (must be a string)
+- new_email (must be a string)
+- date_of_birth (must be a valid date string with format yyyy-mm-dd e.g. 2021-12-31)
+- first_name (must be a string)
+- last_name (must be a string)
+- password (must be a string)
+
+
+*Delete Account*
+Path: <BASE_URL>/login-service/v1/delete-account
+Http Method: POST, x-www-form-urlencoded
+Required Parameters:
+- token (must be a valid token)
