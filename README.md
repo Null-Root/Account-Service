@@ -1,4 +1,4 @@
-# Login-Service
+# Account-Service
 
 # Paths 
 *Register Account* \
