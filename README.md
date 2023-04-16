@@ -2,7 +2,7 @@
 
 # Paths 
 *Register Account* \
-Path: <BASE_URL>/login-service/v1/register \
+Path: <BASE_URL>/account-service/v1/register \
 Http Method: POST, x-www-form-urlencoded \
 Required Parameters: 
 - first_name (must be a string) 
@@ -13,7 +13,7 @@ Required Parameters:
 
 
 *Login Account* \
-Path: <BASE_URL>/login-service/v1/login \
+Path: <BASE_URL>/account-service/v1/login \
 Http Method: POST, x-www-form-urlencoded \
 Required Parameters: 
 - email (must be a string) 
@@ -21,15 +21,15 @@ Required Parameters:
 
 
 *Logout Account* \
-Path: <BASE_URL>/login-service/v1/logout \
+Path: <BASE_URL>/account-service/v1/logout \
 Http Method: POST, x-www-form-urlencoded \
 Required Parameters: 
 - email (must be a string) 
 
 
 *Update Account* \
-Path: <BASE_URL>/login-service/v1/update-account \
-Http Method: POST, x-www-form-urlencoded \
+Path: <BASE_URL>/account-service/v1/account \
+Http Method: PUT, x-www-form-urlencoded \
 Required Parameters: 
 - token (must be a valid token) 
 - old_email (must be a string) 
@@ -41,14 +41,14 @@ Required Parameters:
 
 
 *Delete Account* \
-Path: <BASE_URL>/login-service/v1/delete-account \
-Http Method: POST, x-www-form-urlencoded \
+Path: <BASE_URL>/account-service/v1/account \
+Http Method: DELETE, x-www-form-urlencoded \
 Required Parameters: 
 - token (must be a valid token) 
 
 
 *Check Email*\
-Path: <BASE_URL>/login-service/v1/check-email \
-Http Method: POST, x-www-form-urlencoded \
+Path: <BASE_URL>/account-service/v1/check-email \
+Http Method: GET, x-www-form-urlencoded \
 Required Parameters:
 - email (must be a string)

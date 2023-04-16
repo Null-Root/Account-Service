@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
-const URL_PATH = "/login-service/v1";
+const URL_PATH = "/account-service/v1";
 
 // Routes
 app.post(URL_PATH + '/register', async(req: Request, res: Response) => {
@@ -58,7 +58,7 @@ app.post(URL_PATH + '/logout', async(req: Request, res: Response) => {
     await logoutHandler(req, res);
 });
 
-app.post(URL_PATH + '/update-account', auth_verify, async(req: Request, res: Response) => {
+app.put(URL_PATH + '/account', auth_verify, async(req: Request, res: Response) => {
     if(!is_valid_inputs(
         'POST',
         [['first_name', 'string'],
@@ -71,11 +71,11 @@ app.post(URL_PATH + '/update-account', auth_verify, async(req: Request, res: Res
 	await updateAccountHandler(req, res);
 });
 
-app.post(URL_PATH + '/delete-account', auth_verify, async(req: Request, res: Response) => {
+app.delete(URL_PATH + '/account', auth_verify, async(req: Request, res: Response) => {
     await deleteAccountHandler(req, res);
 });
 
-app.post(URL_PATH + '/check-email', async(req: Request, res: Response) => {
+app.get(URL_PATH + '/check-email', async(req: Request, res: Response) => {
     await checkEmailHandler(req, res);
 });
 
