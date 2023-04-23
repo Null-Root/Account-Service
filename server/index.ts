@@ -2,8 +2,9 @@ require('dotenv').config();
 
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import express, { Request, Response, response } from 'express';
-import { ResponseModel, RoleType } from './models';
+import express, { NextFunction, Request, Response } from 'express';
+import cors from 'cors';
+import { ResponseModel } from './models';
 
 import {
 	registerHandler,
@@ -21,9 +22,11 @@ const port = process.env.API_PORT;
 // Database 
 mongoose.connect(process.env.MONGO_DB_URL!);
 
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
+// CORS
+app.use(cors());
+
+// To Parse Body (Json)
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 const URL_PATH = "/account-service/v1";
