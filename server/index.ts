@@ -53,7 +53,7 @@ app.post(URL_PATH + '/login', async(req: Request, res: Response) => {
     await loginHandler(req, res);
 });
 
-app.post(URL_PATH + '/logout', async(req: Request, res: Response) => {
+app.post(URL_PATH + '/logout', auth_verify, async(req: Request, res: Response) => {
     if(!is_valid_inputs(
         'POST',
         [['email', 'string']],
