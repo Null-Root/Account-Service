@@ -1,3 +1,5 @@
+=================================================
+
 Register Account
 Path: <BASE_URL>/account-service/v1/register
 Http Method: POST, x-www-form-urlencoded

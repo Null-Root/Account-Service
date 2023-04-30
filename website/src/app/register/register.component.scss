@@ -1,0 +1,18 @@
+#background-register {
+    background-color: #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 520px;
+    height: 100vh;
+
+    & > div {
+        margin: 0;
+    }
+}

@@ -1,0 +1,53 @@
+<div id="background-register">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title center-align">Create a New Account</span>
+                        <form>
+                            <div class="col">
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <input id="first_name" [(ngModel)]="first_name" name="first_name" type="text">
+                                        <label for="first_name">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <input id="last_name" [(ngModel)]="last_name" name="last_name" type="text">
+                                        <label for="last_name">Last Name</label>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <input id="date" [ngModel]="date_of_birth | date:'yyyy-MM-dd'" (ngModelChange)="date_of_birth = $event" name="date" type="date">
+                                        <label for="date">Birth Date</label>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <input id="email" [(ngModel)]="email" name="email" type="email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <input id="password" [(ngModel)]="password" name="password" type="password">
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 center-align">
+                                    <button class="btn waves-effect waves-light blue" type="submit" (click)="register()">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="/login" style="text-transform: none !important">Already have an account? Login here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
