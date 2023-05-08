@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getAccountDetails, updateAccount } from '../repository';
-import { hashString } from '../utility/crypto_utility';
+import { hashString } from '../utility';
 import { BasicAccountInfo, ResponseModel } from '../models';
 
 export default async function updateAccountHandler(req: Request, res: Response) {

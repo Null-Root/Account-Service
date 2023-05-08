@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { compareHash } from '../utility/crypto_utility';
+import { compareHash } from '../utility';
 import { checkIfAccountExists, getAccountDetails, updateAccount } from '../repository';
 import { LogState, ResponseModel } from '../models';
 import jwt from 'jsonwebtoken';

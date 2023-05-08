@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { BasicAccountInfo, AccountModel, LogState, ResponseModel } from '../models';
-import { hashString } from '../utility/crypto_utility';
+import { hashString } from '../utility';
 import { checkIfAccountExists, createNewAccount } from '../repository';
 
 

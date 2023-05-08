@@ -64,7 +64,6 @@ async function createNewAccount(account: AccountModel) {
     return true;
 }
 
-
 async function updateAccount(account: AccountModel) {
 
     try {
@@ -105,7 +104,6 @@ async function deleteAccount(email: string) {
     }
     return true;
 }
-
 
 export {
     checkIfAccountExists,

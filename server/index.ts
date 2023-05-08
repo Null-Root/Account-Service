@@ -1,8 +1,7 @@
-require('dotenv').config();
-
+import dotenv from "dotenv";
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { ResponseModel } from './models';
 
@@ -14,12 +13,20 @@ import {
     deleteAccountHandler,
     checkEmailHandler
 } from './handlers';
-import { auth_verify, is_valid_inputs } from './middleware';
 
+import {
+    auth_verify,
+    is_valid_inputs
+} from './middleware';
+
+// Load Environment Variable
+dotenv.config()
+
+// Express.js
 const app = express();
 const port = process.env.API_PORT;
 
-// Database 
+// Database (Mongoose)
 mongoose.connect(process.env.MONGO_DB_URL!);
 
 // CORS
