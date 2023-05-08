@@ -55,7 +55,7 @@ Required Parameters:
 
 
 **Check Email** \
-Path: /login-service/v1/check-email \
+Path: /account-service/v1/check-email \
 Http Method: GET, Query Params \
 Required Parameters:
 - email (must be a string)
