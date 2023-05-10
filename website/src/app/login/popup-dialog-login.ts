@@ -3,16 +3,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/services';
 
 @Component({
-    selector: 'popup-dialog-register',
-    templateUrl: './popup-dialog-register.html',
-    styleUrls: ['./popup-dialog-register.scss']
+    selector: 'popup-dialog-login',
+    templateUrl: './popup-dialog-login.html',
+    styleUrls: ['./popup-dialog-login.scss']
 })
-export class PopupDialogRegister implements OnInit {
+export class PopupDialogLogin implements OnInit {
     dialog_content: string | undefined;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
-        public dialogRef: MatDialogRef<PopupDialogRegister>,
+        public dialogRef: MatDialogRef<PopupDialogLogin>,
         private apiService: ApiService
     ) {
         this.dialog_content = "Executing Action, Please Wait...";
@@ -21,7 +21,7 @@ export class PopupDialogRegister implements OnInit {
     ngOnInit(): void {
         const { accountModel, nextLink } = this.data;
 
-        const observable_data = this.apiService.sendRegisterAccount(accountModel);
+        const observable_data = this.apiService.sendLoginAccount(accountModel);
 
         observable_data.subscribe({
             next: (response: any) => {

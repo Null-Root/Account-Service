@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PopupDialogRegister } from './register/popup-dialog-register';
+import { PopupDialogLogin } from './login/popup-dialog-login';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,7 +20,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PopupDialogRegister } from './register/popup-dialog-register';
 
 
 
@@ -28,7 +29,8 @@ import { PopupDialogRegister } from './register/popup-dialog-register';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    PopupDialogRegister
+    PopupDialogRegister,
+    PopupDialogLogin
   ],
   imports: [
     BrowserModule,
