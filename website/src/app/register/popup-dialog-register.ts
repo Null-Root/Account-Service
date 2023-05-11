@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/services';
+import { sleep } from 'src/utility';
 
 @Component({
     selector: 'popup-dialog-register',
@@ -24,13 +25,15 @@ export class PopupDialogRegister implements OnInit {
         const observable_data = this.apiService.sendRegisterAccount(accountModel);
 
         observable_data.subscribe({
-            next: (response: any) => {
+            next: async (response: any) => {
                 this.dialog_content = response.description;
+                await sleep(1500);
                 window.location.href = nextLink;
             },
-            error: (error: any) => {
+            error: async (error: any) => {
                 this.dialog_content = "Error Occurred! ";
                 this.dialog_content += error.error.description;
+                await sleep(1500);
             }
         });
     }
