@@ -21,7 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
+import { ApiService } from 'src/services';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

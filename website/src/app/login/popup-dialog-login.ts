@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/services';
 
 @Component({
@@ -13,7 +14,8 @@ export class PopupDialogLogin implements OnInit {
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         public dialogRef: MatDialogRef<PopupDialogLogin>,
-        private apiService: ApiService
+        private apiService: ApiService,
+        private cookieService: CookieService
     ) {
         this.dialog_content = "Executing Action, Please Wait...";
     }
@@ -27,6 +29,10 @@ export class PopupDialogLogin implements OnInit {
             next: (response: any) => {
                 this.dialog_content = response.description;
                 window.location.href = nextLink;
+
+                // Set Cookie
+				this.cookieService.set( 'email', accountModel.email );
+				this.cookieService.set( 'user_token', response.payload );
             },
             error: (error: any) => {
                 this.dialog_content = "Error Occurred! ";
