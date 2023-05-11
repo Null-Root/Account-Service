@@ -7,7 +7,8 @@ import { AccountModel } from "src/models";
 })
 export class ApiService {
     API_REGISTER_LINK = "http://localhost:9000/account-service/v1/register";
-    API_LOGIN_LINK = "http://localhost:9000/account-service/v1/login"
+    API_LOGIN_LINK = "http://localhost:9000/account-service/v1/login";
+    API_LOGOUT_LINK = "http://localhost:9000/account-service/v1/logout";
 
     constructor(private http: HttpClient) {}
 
@@ -17,5 +18,9 @@ export class ApiService {
 
     public sendLoginAccount(accountModel: AccountModel) {
         return this.http.post(this.API_LOGIN_LINK, accountModel);
+    }
+
+    public sendLogoutAccount(data: any) {
+        return this.http.post(this.API_LOGOUT_LINK, data);
     }
 };

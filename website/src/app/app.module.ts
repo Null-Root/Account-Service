@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { ApiService } from 'src/services';
 import { CookieService } from 'ngx-cookie-service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CookieService } from 'ngx-cookie-service';
     LoginComponent,
     HomeComponent,
     PopupDialogRegister,
-    PopupDialogLogin
+    PopupDialogLogin,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
