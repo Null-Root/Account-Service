@@ -29,6 +29,7 @@ Path: /account-service/v1/logout \
 Http Method: POST, x-www-form-urlencoded \
 Required Parameters:
 - email (must be a string)
+- token (even if the token is already expired)
 ***
 
 
