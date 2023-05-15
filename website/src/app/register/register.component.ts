@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
 	}
 
 	back() {
-		window.location.href = this.dialogData.nextLink = "";
+		window.location.href = this.dialogData.nextLink!;
 	}
 
 	register() {
