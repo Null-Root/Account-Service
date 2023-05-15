@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/services';
-import { sleep } from 'src/utility';
+import { redirectWithParams, sleep } from 'src/utility';
 
 @Component({
     selector: 'popup-dialog-login',
@@ -30,11 +30,17 @@ export class PopupDialogLogin implements OnInit {
             next: async (response: any) => {
                 this.dialog_content = response.description;
                 await sleep(1500);
-                window.location.href = nextLink;
 
-                // Set Cookie
+                // Set Cookie (For Web Apps)
 				this.cookieService.set( 'email', accountModel.email );
 				this.cookieService.set( 'user_token', response.payload );
+
+                // Redirect with query
+                const params = {
+                    email: accountModel.email,
+                    token: response.payload
+                };
+                redirectWithParams(nextLink, params);
             },
             error: async (error: any) => {
                 this.dialog_content = "Error Occurred! ";
