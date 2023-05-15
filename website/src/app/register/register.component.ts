@@ -77,6 +77,10 @@ export class RegisterComponent implements OnInit {
 		});
 	}
 
+	back() {
+		window.location.href = this.dialogData.nextLink = "";
+	}
+
 	register() {
 		// Get Values From Controls
 		const FirstName = this.firstFormGroup.get('FN_Ctrl')?.value as string;

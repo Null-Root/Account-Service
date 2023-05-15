@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
 		});
 	}
 
+	back() {
+		window.location.href = this.dialogData.nextLink = "";
+	}
+
 	login() {
 		// Get Values From Control
 		const Email = this.loginFormGroup.get('Email_Ctrl')?.value as string;

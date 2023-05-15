@@ -1,5 +1,10 @@
 <div>
-    <span class="register-lbl">Register Account</span>
+    <button mat-flat-button (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        Back
+    </button>
+
+    <p class="register-lbl">Register Account</p>
     
     <div class="register-account-form-div">
         <mat-stepper class="stepper" [orientation]="(stepperOrientation | async)!">

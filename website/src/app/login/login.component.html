@@ -1,7 +1,12 @@
 <div>
-    <span class="login-lbl">Login Account</span>
+    <button mat-flat-button (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        Back
+    </button>
 
-    <div class="login-account-form-div">
+    <p class="login-lbl">Login Account</p>
+
+    <div class="login-account-form-div">      
         <form [formGroup]="loginFormGroup" class="form_fix_vert">
             <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
