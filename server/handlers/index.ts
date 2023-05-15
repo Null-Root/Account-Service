@@ -4,6 +4,7 @@ import logoutHandler from './logoutHandler';
 import updateAccountHandler from './updateAccountHandler';
 import deleteAccountHandler from './deleteAccountHandler';
 import checkEmailHandler from './checkEmailHandler';
+import checkAuthHandler from './checkAuthHandler';
 
 export {
     registerHandler,
@@ -11,5 +12,6 @@ export {
     logoutHandler,
     updateAccountHandler,
     deleteAccountHandler,
-    checkEmailHandler
+    checkEmailHandler,
+    checkAuthHandler
 };

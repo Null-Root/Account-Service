@@ -11,7 +11,8 @@ import {
     logoutHandler,
     updateAccountHandler,
     deleteAccountHandler,
-    checkEmailHandler
+    checkEmailHandler,
+    checkAuthHandler
 } from './handlers';
 
 import {
@@ -88,6 +89,10 @@ app.delete(URL_PATH + '/account', auth_verify, async(req: Request, res: Response
 app.get(URL_PATH + '/check-email', async(req: Request, res: Response) => {
     await checkEmailHandler(req, res);
 });
+
+app.get(URL_PATH + '/check-auth', async(req: Request, res: Response) => {
+    await checkAuthHandler(req, res);
+})
 
 
 // Non-Existent Routes

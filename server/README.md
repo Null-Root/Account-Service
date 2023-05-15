@@ -60,7 +60,13 @@ Path: /account-service/v1/check-email \
 Http Method: GET, Query Params \
 Required Parameters:
 - email (must be a string)
+***
 
+**Check Auth** \
+Path: /account-service/v1/check-auth \
+Http Method: GET, Query Params \
+Required Parameters:
+- token (must be a valid token)
 
 ## Warning
 
