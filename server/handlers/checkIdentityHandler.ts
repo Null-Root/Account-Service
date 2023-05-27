@@ -16,6 +16,17 @@ export default async function checkIdentityHandler(req: Request, res: Response) 
         // Check if account in database is set to logged in
         // Check if token match from what is stored in database
         const account_details = await getAccountDetails(email);
+
+        // Check If Account Exists
+        if (account_details == null) {
+            return res.status(404).json(
+                new ResponseModel(
+                    'failed',
+                    'account not found'
+                )
+            )
+        }
+
         const { is_logged_in, user_token } = account_details.log_state!;
 
         if (is_logged_in === false || user_token !== token) {

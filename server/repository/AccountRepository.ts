@@ -13,6 +13,10 @@ async function getAccountDetails(email: string) {
     // find email
     const account = await AccountInfo.findOne({ email: email });
 
+    if (account == null) {
+        return null;
+    }
+
     const basicAccountInfo: BasicAccountInfo = {
         first_name: account?.first_name,
         last_name: account?.last_name,

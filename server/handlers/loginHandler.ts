@@ -20,6 +20,17 @@ export default async function loginHandler(req: Request, res: Response) {
     
     // Check if password matches
     let account_details = await getAccountDetails(email);
+
+    // Check If Account Exists
+    if (account_details == null) {
+        return res.status(404).json(
+            new ResponseModel(
+                'failed',
+                'account not found'
+            )
+        )
+    }
+
     const { account_info } = account_details;
 
     if(!await compareHash(password, account_info?.hashed_password!)) {

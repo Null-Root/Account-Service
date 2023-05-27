@@ -10,6 +10,16 @@ export default async function updateAccountHandler(req: Request, res: Response) 
     // Get Account Details
     const account_details = await getAccountDetails(old_email);
 
+    // Check If Account Exists
+    if (account_details == null) {
+        return res.status(404).json(
+            new ResponseModel(
+                'failed',
+                'account not found'
+            )
+        )
+    }
+
     // If password is empty string, skip password
     let new_hashed_password = account_details.account_info?.hashed_password;
     if (password.trim() !== '') {

@@ -22,6 +22,17 @@ export default async function auth_verify(req: Request, res: Response, next: Nex
 		// check if email is logged with correct token
 		const { email } = decoded as { email: string }
 		const account_details = await getAccountDetails(email);
+
+		// Check If Account Exists
+		if (account_details == null) {
+			return res.status(404).json(
+				new ResponseModel(
+					'failed',
+					'account not found'
+				)
+			)
+		}
+
 		const { log_state } = account_details;
 		const { is_logged_in, user_token } = log_state!;
 

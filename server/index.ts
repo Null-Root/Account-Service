@@ -20,6 +20,7 @@ import {
     is_valid_inputs
 } from './middleware';
 
+
 // Load Environment Variable
 dotenv.config()
 
@@ -37,9 +38,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-const URL_PATH = "/account-service/v1";
 
 // Routes
+const URL_PATH = "/account-service/v1";
+
 app.post(URL_PATH + '/register', async(req: Request, res: Response) => {
     if(!is_valid_inputs(
         'POST',
@@ -92,7 +94,7 @@ app.post(URL_PATH + '/check-email', async(req: Request, res: Response) => {
 
 app.post(URL_PATH + '/check-identity', async(req: Request, res: Response) => {
     await checkIdentityHandler(req, res);
-})
+});
 
 
 // Non-Existent Routes

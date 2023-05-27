@@ -18,6 +18,17 @@ export default async function logoutHandler(req: Request, res: Response) {
 
     // Check if same token
     const account_details = await getAccountDetails(email);
+
+    // Check If Account Exists
+    if (account_details == null) {
+        return res.status(404).json(
+            new ResponseModel(
+                'failed',
+                'account not found'
+            )
+        )
+    }
+
     const { user_token } = account_details.log_state!;
 
     if (token != user_token) {
