@@ -86,11 +86,11 @@ app.delete(URL_PATH + '/account', auth_verify, async(req: Request, res: Response
     await deleteAccountHandler(req, res);
 });
 
-app.get(URL_PATH + '/check-email', async(req: Request, res: Response) => {
+app.post(URL_PATH + '/check-email', async(req: Request, res: Response) => {
     await checkEmailHandler(req, res);
 });
 
-app.get(URL_PATH + '/check-identity', async(req: Request, res: Response) => {
+app.post(URL_PATH + '/check-identity', async(req: Request, res: Response) => {
     await checkIdentityHandler(req, res);
 })
 

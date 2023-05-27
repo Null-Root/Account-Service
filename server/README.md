@@ -57,14 +57,14 @@ Required Parameters:
 
 **Check Email** \
 Path: /account-service/v1/check-email \
-Http Method: GET, Query Params \
+Http Method: POST, Query Params \
 Required Parameters:
 - email (must be a string)
 ***
 
 **Check Identity** \
 Path: /account-service/v1/check-auth \
-Http Method: GET, Query Params \
+Http Method: POST, Query Params \
 Required Parameters:
 - token (must be a valid token)
 
