@@ -1,22 +1,12 @@
 import { Request, Response } from 'express';
 import { compareHash } from '../utility';
-import { checkIfAccountExists, getAccountDetails, updateAccount } from '../repository';
+import { getAccountDetails, updateAccount } from '../repository';
 import { LogState, ResponseModel } from '../models';
 import jwt from 'jsonwebtoken';
 
 export default async function loginHandler(req: Request, res: Response) {
     // Get all required account information
     const { email, password } = req.body;
-
-    // Check if account exists
-    if(!await checkIfAccountExists(email)) {
-        return res.status(400).json(
-            new ResponseModel(
-                'failed',
-                'account does not exist'
-            )
-        )
-    }
     
     // Check if password matches
     let account_details = await getAccountDetails(email);
@@ -59,7 +49,7 @@ export default async function loginHandler(req: Request, res: Response) {
     const result = await updateAccount(account_details);
 
     if (result) {
-        return res.status(201).json(
+        return res.status(200).json(
             new ResponseModel(
                 'success',
                 'account logged in'

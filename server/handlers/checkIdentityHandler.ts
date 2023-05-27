@@ -5,7 +5,7 @@ import { getAccountDetails } from '../repository';
 
 export default async function checkIdentityHandler(req: Request, res: Response) {
     // Get all required account information
-    let { token } = req.query;
+    let { token } = req.body;
     token = token as string;
 
     try {

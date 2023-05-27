@@ -1,13 +1,6 @@
 import { AccountInfo, AccountModel, BasicAccountInfo, LogState } from '../models';
 import mongoose from 'mongoose';
 
-async function checkIfAccountExists(email: string) {
-    // check if an email exists in the database
-    const accountWithSameEmail = await AccountInfo.findOne({ email: email });
-
-    if (accountWithSameEmail) return true;
-    else return false;
-}
 
 async function getAccountDetails(email: string) {
     // find email
@@ -110,7 +103,6 @@ async function deleteAccount(email: string) {
 }
 
 export {
-    checkIfAccountExists,
     getAccountDetails,
     createNewAccount,
     updateAccount,

@@ -1,20 +1,10 @@
 import { Request, Response } from 'express';
-import { checkIfAccountExists, getAccountDetails, updateAccount } from '../repository';
+import { getAccountDetails, updateAccount } from '../repository';
 import { LogState, ResponseModel } from '../models';
 
 export default async function logoutHandler(req: Request, res: Response) {
     // Get all required account information
     const { email, token } = req.body;
-
-    // Check if email exists
-    if(!await checkIfAccountExists(email)) {
-        return res.status(400).json(
-            new ResponseModel(
-                'failed',
-                'account does not exist'
-            )
-        );
-    }
 
     // Check if same token
     const account_details = await getAccountDetails(email);

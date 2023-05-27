@@ -1,5 +1,4 @@
 import {
-    checkIfAccountExists,
     getAccountDetails,
     createNewAccount,
     updateAccount,
@@ -7,7 +6,6 @@ import {
 } from "./AccountRepository";
 
 export {
-    checkIfAccountExists,
     getAccountDetails,
     createNewAccount,
     updateAccount,

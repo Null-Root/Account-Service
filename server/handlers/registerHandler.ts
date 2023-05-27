@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { BasicAccountInfo, AccountModel, LogState, ResponseModel } from '../models';
 import { hashString } from '../utility';
-import { checkIfAccountExists, createNewAccount } from '../repository';
+import { getAccountDetails, createNewAccount } from '../repository';
 
 
 export default async function registerHandler(req: Request, res: Response) {
@@ -9,7 +9,8 @@ export default async function registerHandler(req: Request, res: Response) {
     const { first_name, last_name, date_of_birth, email, password } = req.body;
 
     // Check email
-    if(await checkIfAccountExists(email)) {
+    let account_details = getAccountDetails(email);
+    if (account_details != null) {
         return res.status(400).json(
             new ResponseModel(
                 'failed',
