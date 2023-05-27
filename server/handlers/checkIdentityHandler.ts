@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import { ResponseModel } from '../models';
 import { getAccountDetails } from '../repository';
 
-export default async function checkAuthHandler(req: Request, res: Response) {
+export default async function checkIdentityHandler(req: Request, res: Response) {
     // Get all required account information
     let { token } = req.query;
     token = token as string;

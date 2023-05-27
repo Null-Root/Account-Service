@@ -62,7 +62,7 @@ Required Parameters:
 - email (must be a string)
 ***
 
-**Check Auth** \
+**Check Identity** \
 Path: /account-service/v1/check-auth \
 Http Method: GET, Query Params \
 Required Parameters:

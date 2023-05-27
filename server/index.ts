@@ -12,7 +12,7 @@ import {
     updateAccountHandler,
     deleteAccountHandler,
     checkEmailHandler,
-    checkAuthHandler
+    checkIdentityHandler
 } from './handlers';
 
 import {
@@ -90,8 +90,8 @@ app.get(URL_PATH + '/check-email', async(req: Request, res: Response) => {
     await checkEmailHandler(req, res);
 });
 
-app.get(URL_PATH + '/check-auth', async(req: Request, res: Response) => {
-    await checkAuthHandler(req, res);
+app.get(URL_PATH + '/check-identity', async(req: Request, res: Response) => {
+    await checkIdentityHandler(req, res);
 })
 
 
