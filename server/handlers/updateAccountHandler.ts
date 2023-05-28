@@ -5,17 +5,18 @@ import { BasicAccountInfo, ResponseModel } from '../models';
 
 export default async function updateAccountHandler(req: Request, res: Response) {
     // Get all required account information
-    const { first_name, last_name, date_of_birth, new_email, password, old_email } = req.body;
+    const { first_name, last_name, date_of_birth, password, __token_decoded } = req.body;
+    const { email } = __token_decoded as { email: string }
 
     // Get Account Details
-    const account_details = await getAccountDetails(old_email);
+    const account_details = await getAccountDetails(email);
 
     // Check If Account Exists
     if (account_details == null) {
         return res.status(404).json(
             new ResponseModel(
                 'failed',
-                'account not found'
+                'Account Not Found'
             )
         )
     }
@@ -31,7 +32,7 @@ export default async function updateAccountHandler(req: Request, res: Response) 
         first_name: first_name,
         last_name: last_name,
         date_of_birth: new Date(date_of_birth),
-        email: new_email,
+        email: email,
         hashed_password: new_hashed_password
     };
 
@@ -44,7 +45,7 @@ export default async function updateAccountHandler(req: Request, res: Response) 
         return res.status(201).json(
             new ResponseModel(
                 'success',
-                'account info updated'
+                'Account Info Updated'
             )
         )
     }
@@ -52,7 +53,7 @@ export default async function updateAccountHandler(req: Request, res: Response) 
     return res.status(400).json(
         new ResponseModel(
             'failed',
-            'account failed to update info'
+            'Account Failed To Update Information'
         )
     )
 }

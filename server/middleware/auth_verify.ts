@@ -28,7 +28,7 @@ export default async function auth_verify(req: Request, res: Response, next: Nex
 			return res.status(404).json(
 				new ResponseModel(
 					'failed',
-					'account not found'
+					'Account Not Found'
 				)
 			)
 		}

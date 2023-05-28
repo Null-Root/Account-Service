@@ -14,7 +14,7 @@ export default async function logoutHandler(req: Request, res: Response) {
         return res.status(404).json(
             new ResponseModel(
                 'failed',
-                'account not found'
+                'Account Not Found'
             )
         )
     }
@@ -25,7 +25,7 @@ export default async function logoutHandler(req: Request, res: Response) {
         return res.status(400).json(
             new ResponseModel(
                 'failed',
-                'token mismatch'
+                'Token Mismatch'
             )
         );
     }
@@ -42,7 +42,7 @@ export default async function logoutHandler(req: Request, res: Response) {
         return res.status(201).json(
             new ResponseModel(
                 'success',
-                'account logged out'
+                'Log Out Successful'
             )
         );
     }
@@ -50,7 +50,7 @@ export default async function logoutHandler(req: Request, res: Response) {
     return res.status(400).json(
         new ResponseModel(
             'failed',
-            'account failed to log out'
+            'Log Out Failed'
         )
     )
 }

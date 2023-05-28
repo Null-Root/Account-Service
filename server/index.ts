@@ -77,9 +77,7 @@ app.put(URL_PATH + '/account', auth_verify, async(req: Request, res: Response) =
         [['first_name', 'string'],
         ['last_name', 'string'],
         ['date_of_birth', 'date'],
-        ['new_email', 'string'],
-        ['password', 'string'],
-        ['old_email', 'string']],
+        ['password', 'string']],
         req, res)) return;
 	await updateAccountHandler(req, res);
 });
@@ -89,10 +87,18 @@ app.delete(URL_PATH + '/account', auth_verify, async(req: Request, res: Response
 });
 
 app.post(URL_PATH + '/check-email', async(req: Request, res: Response) => {
+    if(!is_valid_inputs(
+        'POST',
+        [['email', 'string']],
+        req, res)) return;
     await checkEmailHandler(req, res);
 });
 
 app.post(URL_PATH + '/check-identity', async(req: Request, res: Response) => {
+    if(!is_valid_inputs(
+        'POST',
+        [['token', 'string']],
+        req, res)) return;
     await checkIdentityHandler(req, res);
 });
 

@@ -8,12 +8,12 @@ export default async function deleteAccountHandler(req: Request, res: Response) 
     const { email } = __token_decoded as { email: string }
     
     // Check If Account Exists
-    let account_details = getAccountDetails(email);
+    let account_details = await getAccountDetails(email);
     if (account_details == null) {
         return res.status(404).json(
             new ResponseModel(
                 'failed',
-                'account not found'
+                'Account Not Found'
             )
         )
     }
@@ -22,10 +22,10 @@ export default async function deleteAccountHandler(req: Request, res: Response) 
     const result = await deleteAccount(email);
 
     if (result) {
-        return res.status(204).json(
+        return res.status(200).json(
             new ResponseModel(
                 'success',
-                'account deleted successfully'
+                'Account Deleted Successfully'
             )
         )
     }
@@ -33,7 +33,7 @@ export default async function deleteAccountHandler(req: Request, res: Response) 
     return res.status(400).json(
         new ResponseModel(
             'failed',
-            'account deletion failed'
+            'Account Deletion Failed'
         )
     )
 }

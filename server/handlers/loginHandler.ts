@@ -16,7 +16,7 @@ export default async function loginHandler(req: Request, res: Response) {
         return res.status(404).json(
             new ResponseModel(
                 'failed',
-                'account not found'
+                'Account Not Found'
             )
         )
     }
@@ -27,7 +27,7 @@ export default async function loginHandler(req: Request, res: Response) {
         return res.status(400).json(
             new ResponseModel(
                 'failed',
-                'wrong password on email'
+                'Wrong Password On Email'
             )
         )
     }
@@ -52,7 +52,7 @@ export default async function loginHandler(req: Request, res: Response) {
         return res.status(200).json(
             new ResponseModel(
                 'success',
-                'account logged in'
+                'Log In Successful'
             ).setPayload(user_token)
         )
     }
@@ -60,7 +60,7 @@ export default async function loginHandler(req: Request, res: Response) {
     return res.status(400).json(
         new ResponseModel(
             'failed',
-            'account failed to log in'
+            'Log In Failed'
         )
     )
 }
