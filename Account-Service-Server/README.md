@@ -38,8 +38,6 @@ Path: /account-service/v1/account \
 Http Method: PUT, x-www-form-urlencoded \
 Required Parameters:
 - token (must be a valid token)
-- old_email (must be a string)
-- new_email (must be a string)
 - date_of_birth (must be a valid date string with format yyyy-mm-dd e.g. 2021-12-31)
 - first_name (must be a string)
 - last_name (must be a string)
@@ -71,3 +69,5 @@ Required Parameters:
 ## Warning
 
 1. Authentication Implementation makes use of both mongodb and jwt token, logging in stores a token with the state to identify if user is logged in. This is to allow for logging out earlier than the token expiration (To avoid token reuse). Having no token in the client side will prompt a login to the user even if account if logged in according to server (MongoDB).
+
+2. No Protections against CSRF Attacks
