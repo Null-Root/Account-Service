@@ -1,0 +1,28 @@
+version: '3'
+services:
+  database:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+
+  server:
+    build:
+      context: ./Account-Service-Server
+    ports:
+      - 9000:9000
+    depends_on:
+      - database
+    env_file:
+      - ./Account-Service-Server/.env
+
+  website:
+    build:
+      context: ./Account-Service-Website
+    ports:
+      - 9001:9001
+    depends_on:
+      - server
+
+
