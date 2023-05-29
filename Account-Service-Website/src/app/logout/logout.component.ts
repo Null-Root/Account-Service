@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ALLOWED_REDIRECTS } from 'src/consts';
 import { ApiService } from 'src/services';
 import { sleep } from 'src/utility';
 
@@ -32,6 +33,11 @@ export class LogoutComponent implements OnInit {
 				// If none, set to empty string
 				if (params.hasOwnProperty('nextLink')) this.nextLink = params['nextLink'];
 				else this.nextLink = "";
+
+				// Check If Link Provided is in Allowed External Redirects list, Set to empty string if none
+				if (this.nextLink == "" || !ALLOWED_REDIRECTS.includes(this.nextLink!)) {
+					this.nextLink = "";
+				}
 			}
 		});
 
@@ -54,9 +60,10 @@ export class LogoutComponent implements OnInit {
 		observable_data.subscribe({
 			next: async (response: any) => {
 				this.show_loader = false;
+				this.logout_content = response.description;
+
 				await sleep(1200);
 
-				this.logout_content = response.description;
 				window.location.href = this.nextLink;
 
 				// Set Cookie
@@ -64,10 +71,11 @@ export class LogoutComponent implements OnInit {
 			},
 			error: async (error: any) => {
 				this.show_loader = false;
-				await sleep(1200);
-
 				this.logout_content = "Error Occurred!";
-				window.location.href = "/";
+
+				await sleep(1200);
+				
+				window.location.href = this.nextLink;
 			}
 		});
 	}
