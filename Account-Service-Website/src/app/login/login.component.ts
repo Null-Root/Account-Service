@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { AccountModel } from 'src/models';
 import { PopupDialogLogin } from './popup-dialog-login';
+import { ALLOWED_REDIRECTS } from 'src/consts';
 
 interface DialogData {
 	accountModel?: AccountModel,
@@ -39,6 +40,11 @@ export class LoginComponent implements OnInit {
 				// If none, set to empty string
 				if (params.hasOwnProperty('nextLink')) this.dialogData.nextLink = params['nextLink'];
 				else this.dialogData.nextLink = "";
+
+				// Check If Link Provided is in Allowed External Redirects list, Set to empty string if none
+				if (this.dialogData.nextLink == "" || !ALLOWED_REDIRECTS.includes(this.dialogData.nextLink!)) {
+					this.dialogData.nextLink = "";
+				}
 			}
 		});
 	}

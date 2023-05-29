@@ -8,6 +8,7 @@ import { AccountModel } from 'src/models';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupDialogRegister } from './popup-dialog-register';
 import { ActivatedRoute } from '@angular/router';
+import { ALLOWED_REDIRECTS } from 'src/consts';
 
 interface DialogData {
 	accountModel?: AccountModel,
@@ -58,6 +59,11 @@ export class RegisterComponent implements OnInit {
 				// If none, set to empty string
 				if (params.hasOwnProperty('nextLink')) this.dialogData.nextLink = params['nextLink'];
 				else this.dialogData.nextLink = "";
+
+				// Check If Link Provided is in Allowed External Redirects list, Set to empty string if none
+				if (this.dialogData.nextLink == "" || !ALLOWED_REDIRECTS.includes(this.dialogData.nextLink!)) {
+					this.dialogData.nextLink = "";
+				}
 			}
 		});
 	}
